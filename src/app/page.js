@@ -11,6 +11,8 @@ async function getTransactions(){
   return transactionsData;
 }
 
+
+
 export default async function Home() {
   const { data } = await getTransactions()
   console.log(data)
