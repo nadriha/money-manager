@@ -14,9 +14,36 @@ GET http://localhost:3000/api/users/
 ###Get user by ID
 GET http://localhost:3000/api/users/ad793ef5-5857-44f4-aed2-97a6c9fbcc09
 
+###Get all user transaction
+GET http://localhost:3000/api/users/transactions/ad793ef5-5857-44f4-aed2-97a6c9fbcc09
+
 ###update user name
 PATCH http://localhost:3000/api/users/ad793ef5-5857-44f4-aed2-97a6c9fbcc09
 
 {
     "name": "Alfan"
 }
+
+### Creating Transactions
+POST http://localhost:3000/api/transactions/
+
+{
+    "title": "Nugas di Fore",
+    "category" : "Study",
+    "createDate": "2024-02-29T14:15:39Z",
+    "amount" : "30000",
+    "description": "statprob",
+    "paymentType": "bni",
+    "user_id": "ad793ef5-5857-44f4-aed2-97a6c9fbcc09"
+}
+
+###Get all transaction
+GET http://localhost:3000/api/transactions/
+
+###Get transaction by id
+GET http://localhost:3000/api/transactions/a194bbd2-3944-43da-9424-e43485bc1bb2
+
+### Delete Transactions
+DELETE http://localhost:3000/api/transactions/503d8051-853d-4b96-a7db-f87904beda08
+
+
