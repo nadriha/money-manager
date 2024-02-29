@@ -1,4 +1,4 @@
-# Creating User
+### Creating User
 POST http://localhost:3000/api/users/
 
 {
@@ -6,3 +6,7 @@ POST http://localhost:3000/api/users/
     "password" : "nadhira",
     "name": "nadhira raihana"
 }
+
+
+###Get all user
+GET http://localhost:3000/api/users/

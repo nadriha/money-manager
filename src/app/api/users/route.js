@@ -17,3 +17,9 @@ export async function POST(req){
 
     return NextResponse.json({message: "Success create transactions", data: createUser }, {status: 201})
 }
+
+export async function GET(){
+    const allUser = await prisma.users.findMany()
+
+    return NextResponse.json({message: "Get all users success", data: allUser})
+}
