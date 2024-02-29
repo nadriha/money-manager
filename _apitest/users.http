@@ -10,3 +10,6 @@ POST http://localhost:3000/api/users/
 
 ###Get all user
 GET http://localhost:3000/api/users/
+
+###Get user by ID
+GET http://localhost:3000/api/users/503d8051-853d-4b96-a7db-f87904beda08
