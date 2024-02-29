@@ -12,4 +12,11 @@ POST http://localhost:3000/api/users/
 GET http://localhost:3000/api/users/
 
 ###Get user by ID
-GET http://localhost:3000/api/users/503d8051-853d-4b96-a7db-f87904beda08
+GET http://localhost:3000/api/users/ad793ef5-5857-44f4-aed2-97a6c9fbcc09
+
+###update user name
+PATCH http://localhost:3000/api/users/ad793ef5-5857-44f4-aed2-97a6c9fbcc09
+
+{
+    "name": "Alfan"
+}
