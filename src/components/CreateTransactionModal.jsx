@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Radio, RadioGroup, Input} from "@nextui-org/react";
 import { useRouter } from 'next/navigation';
+import { CategoryDropdown } from './CategoryDropdown';
 
 export const CreateTransactionModal = () => {
     const router = useRouter();
@@ -11,6 +12,11 @@ export const CreateTransactionModal = () => {
     const [amount, setAmount] = useState("");
     const [description, setDescription] = useState("");
     const [isExpenses, setIsExpenses] = useState("");
+    const [category, setCategory] = useState('');
+
+    const handleChangeCategory = (e) => {
+        setCategory(e);
+    }
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value)
@@ -38,7 +44,7 @@ export const CreateTransactionModal = () => {
             method: "POST",
             body: JSON.stringify({
                 title,
-                "category" : "Gift",
+                category,
                 "createDate": "2024-01-29T14:15:39Z",
                 amount,
                 description,
@@ -73,6 +79,7 @@ export const CreateTransactionModal = () => {
                 <Radio value="income">Income</Radio>
                 
                 </RadioGroup>
+                <CategoryDropdown onChange={handleChangeCategory}/>
                   <Input onChange={handleChangeTitle}
                     autoFocus
                     label="Title"
