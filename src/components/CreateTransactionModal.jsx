@@ -53,7 +53,11 @@ export const CreateTransactionModal = () => {
                 isExpenses
             })
         })
-        console.log(res)
+        setTitle("")
+        setAmount("")
+        setDescription("")
+        setIsExpenses("")
+        setCategory("")
         router.refresh()
         onClose()
     }

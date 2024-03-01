@@ -11,16 +11,25 @@ import { useState } from 'react';
 
 export const UserTransactions = ({data}) => {
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchContent, setSearchContent] = useState('');
 
   const handleChangeCategory = (e) => {
     setSelectedCategory(e);
   }
 
-  if (selectedCategory){
-    data = data.filter(data => data.category === selectedCategory);
+  const handleChangeSearch = (e) => {
+    setSearchContent(e.target.value)
+    
+  }
+
+  if (searchContent || selectedCategory) {
+    data = data.filter(data => 
+        (!selectedCategory || data.category === selectedCategory) && 
+        (!searchContent || data.title.toLowerCase().includes(searchContent.toLowerCase()))
+    );
   }
   
-
+ 
    return (
     <div>
         <div className=" h-[580px] border rounded-lg p-5 ">
@@ -42,6 +51,7 @@ export const UserTransactions = ({data}) => {
                     size="sm"
                     startContent={<SearchIcon size={18} />}
                     type="search"
+                    onChange={handleChangeSearch}
               />
               <CategoryDropdown onChange={handleChangeCategory} className="col-span-1"/>
               </div>
