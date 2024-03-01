@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link} from "@nextui-org/react";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Radio, RadioGroup, Input} from "@nextui-org/react";
 import { useRouter } from 'next/navigation';
 
 export const CreateTransactionModal = () => {
@@ -10,6 +10,7 @@ export const CreateTransactionModal = () => {
     const [title, setTitle] = useState("");
     const [amount, setAmount] = useState("");
     const [description, setDescription] = useState("");
+    const [isExpenses, setIsExpenses] = useState("");
 
     const handleChangeTitle = (e) => {
         setTitle(e.target.value)
@@ -23,6 +24,15 @@ export const CreateTransactionModal = () => {
         setDescription(e.target.value)
     }
 
+    const handleChangeExpenses = (e) => {
+        console.log(e.target.value)
+        if (e.target.value === "expenses"){
+            setIsExpenses("true")
+        } else {
+            setIsExpenses("")
+        }
+    }
+
     async function handlePostTransaction() {
         const res = await fetch("http://localhost:3000/api/transactions/",{
             method: "POST",
@@ -33,7 +43,8 @@ export const CreateTransactionModal = () => {
                 amount,
                 description,
                 "paymentType": "bni",
-                "user_id": "ad793ef5-5857-44f4-aed2-97a6c9fbcc09"
+                "user_id": "ad793ef5-5857-44f4-aed2-97a6c9fbcc09",
+                isExpenses
             })
         })
         console.log(res)
@@ -55,6 +66,13 @@ export const CreateTransactionModal = () => {
               <>
                 <ModalHeader className="flex flex-col gap-1">New Transaction</ModalHeader>
                 <ModalBody>
+                    <RadioGroup onChange={handleChangeExpenses}
+                    orientation="horizontal"
+                    >
+                <Radio value="expenses">Expenses</Radio>
+                <Radio value="income">Income</Radio>
+                
+                </RadioGroup>
                   <Input onChange={handleChangeTitle}
                     autoFocus
                     label="Title"
