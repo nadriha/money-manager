@@ -2,7 +2,14 @@ import { prisma } from "@/utils/prisma";
 import { NextResponse } from "next/server";
 
 export async function POST(req){
-    const {title, category, createDate, amount, description, paymentType, user_id, isExpenses} = await req.json();
+    const {title, category, createDate, amount, description, user_id, isExpenses} = await req.json();
+    let type = ""
+
+    if (isExpenses === "true"){
+        type = "expenses"
+    } else {
+        type = "income"
+    }
 
     const createdTransactions = await prisma.transactions.create({
         data: {
@@ -11,7 +18,7 @@ export async function POST(req){
             createDate, 
             amount, 
             description, 
-            paymentType,
+            type,
             user_id
         },
 

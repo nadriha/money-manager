@@ -40,6 +40,7 @@ export const CreateTransactionModal = () => {
     }
 
     async function handlePostTransaction() {
+        console.log(category)
         const res = await fetch("http://localhost:3000/api/transactions/",{
             method: "POST",
             body: JSON.stringify({
@@ -49,7 +50,7 @@ export const CreateTransactionModal = () => {
                 amount,
                 description,
                 "paymentType": "bni",
-                "user_id": "ad793ef5-5857-44f4-aed2-97a6c9fbcc09",
+                "user_id": "bb841c75-7d35-462b-b983-56adb95f2808",
                 isExpenses
             })
         })

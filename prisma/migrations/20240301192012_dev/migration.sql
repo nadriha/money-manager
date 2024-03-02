@@ -17,7 +17,7 @@ CREATE TABLE "Transactions" (
     "createDate" DATETIME NOT NULL,
     "amount" DECIMAL NOT NULL,
     "description" TEXT,
-    "paymentType" TEXT NOT NULL,
+    "type" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
     CONSTRAINT "Transactions_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "Users" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );

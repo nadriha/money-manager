@@ -2,8 +2,9 @@
 
 import React from 'react'
 import { Card, CardBody, Text } from "@nextui-org/react";
+import { Chart } from "@/components/Chart";
 
-export const UserReport = ( { data } ) => {
+export const UserReport = ( { data }) => {
 
   const formatNumber = (number) => {
     return new Intl.NumberFormat('de-DE').format(number);
@@ -28,6 +29,9 @@ export const UserReport = ( { data } ) => {
             <p className="font-bold text-2xl text-green-500">Rp{formatNumber(data.income)},00</p>
           </CardBody>
         </Card>
+      </div>
+      <div style={ {width:600} }>
+        <Chart/>
       </div>
     </div>
   )
